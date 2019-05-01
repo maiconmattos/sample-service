@@ -1,0 +1,26 @@
+version: '3'
+services:
+
+  sample-service:
+    image: mmattos.github/sample-service:0.1
+container_name: sample-service
+environment:
+  - _JAVA_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+ports:
+  - 8080:8080
+  - 5005:5005
+networks:
+  - sample-net
+
+swagger:
+  image: swaggerapi/swagger-editor:v3.6.17
+  container_name: swagger
+  ports:
+    - 8888:8080
+  networks:
+    - sample-net
+  depends_on:
+    - sample-service
+
+networks:
+  sample-net:

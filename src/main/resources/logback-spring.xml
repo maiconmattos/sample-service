@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <include resource="org/springframework/cloud/gcp/autoconfigure/logging/logback-json-appender.xml"/>
+  <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+  <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+  <springProperty defaultValue="sample-service" name="APP_NAME" source="spring.application.name"/>
+  <springProperty defaultValue="CONSOLE_JSON" name="REF" scope="context" source="sample.service.log.appender"/>
+
+  <logger additivity="false" level="debug" name="mmattos.github">
+    <appender-ref ref="${REF}"/>
+  </logger>
+
+  <logger additivity="false" level="debug" name="AUDIT">
+    <appender-ref ref="${REF}"/>
+  </logger>
+
+  <root level="info">
+    <appender-ref ref="${REF}"/>
+  </root>
+
+</configuration>

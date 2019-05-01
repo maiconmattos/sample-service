@@ -1,0 +1,7 @@
+swagger: "2.0"
+info:
+  description: "Sample Service"
+  version: "1.0.0"
+  title: "Sample Service"
+host: "localhost:8080"
+basePath: "/"
